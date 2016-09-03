@@ -1,0 +1,35 @@
+consul = "consul.service.consul:8500"
+token = "{{ env "CONSUL_TOKEN" }}"
+retry = "10s"
+max_stale = "10m"
+
+prefix {
+  source = "vault/sys/token@{{ env "MASTER_DC" }}"
+}
+prefix {
+  source = "vault/sys/policy@{{ env "MASTER_DC" }}"
+}
+prefix {
+  source = "vault/logical@{{ env "MASTER_DC" }}"
+}
+prefix {
+  source = "vault/audit@{{ env "MASTER_DC" }}"
+}
+prefix {
+  source = "vault/core/audit@{{ env "MASTER_DC" }}"
+}
+prefix {
+  source = "vault/core/auth@{{ env "MASTER_DC" }}"
+}
+prefix {
+  source = "vault/core/keyring@{{ env "MASTER_DC" }}"
+}
+prefix {
+  source = "vault/core/mounts@{{ env "MASTER_DC" }}"
+}
+prefix {
+  source = "vault/core/seal-config@{{ env "MASTER_DC" }}"
+}
+prefix {
+  source = "config@{{ env "MASTER_DC" }}"
+}
