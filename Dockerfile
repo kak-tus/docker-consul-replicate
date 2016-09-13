@@ -26,8 +26,6 @@ RUN apk add --no-cache curl \
   && curl -L https://releases.hashicorp.com/consul-template/0.15.0/consul-template_0.15.0_linux_amd64.zip -o consul-template_0.15.0_linux_amd64.zip \
   && sha256sum -c consul-template_0.15.0_SHA256SUMS \
   && unzip consul-template_0.15.0_linux_amd64.zip \
-  && rm consul-template_0.15.0_linux_amd64.zip consul-template_0.15.0_SHA256SUMS \
-
-  && chmod +x start.sh
+  && rm consul-template_0.15.0_linux_amd64.zip consul-template_0.15.0_SHA256SUMS
 
 CMD ["start.sh"]
