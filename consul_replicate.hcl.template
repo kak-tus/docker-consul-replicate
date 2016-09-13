@@ -4,32 +4,5 @@ retry = "10s"
 max_stale = "10m"
 
 prefix {
-  source = "vault/sys/token@{{ key "config/consul/master_dc" }}"
-}
-prefix {
-  source = "vault/sys/policy@{{ key "config/consul/master_dc" }}"
-}
-prefix {
-  source = "vault/logical@{{ key "config/consul/master_dc" }}"
-}
-prefix {
-  source = "vault/audit@{{ key "config/consul/master_dc" }}"
-}
-prefix {
-  source = "vault/core/audit@{{ key "config/consul/master_dc" }}"
-}
-prefix {
-  source = "vault/core/auth@{{ key "config/consul/master_dc" }}"
-}
-prefix {
-  source = "vault/core/keyring@{{ key "config/consul/master_dc" }}"
-}
-prefix {
-  source = "vault/core/mounts@{{ key "config/consul/master_dc" }}"
-}
-prefix {
-  source = "vault/core/seal-config@{{ key "config/consul/master_dc" }}"
-}
-prefix {
   source = "config@{{ key "config/consul/master_dc" }}"
 }
