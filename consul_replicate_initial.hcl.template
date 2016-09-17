@@ -1,8 +1,12 @@
-consul = "consul.service.consul:8500"
-token = "{{ env "CONSUL_TOKEN" }}"
 retry = "10s"
 max_stale = "10m"
 
+{{with $dc1 := env "MASTER_DC"}}{{with $dc2 := env "DC"}}{{if ne $dc1 (printf "%s" $dc2) }}
 prefix {
   source = "config@{{ env "MASTER_DC" }}"
 }
+
+prefix {
+  source = "vault@{{ env "MASTER_DC" }}"
+}
+{{end}}{{end}}{{end}}
