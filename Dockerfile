@@ -5,7 +5,7 @@ MAINTAINER Andrey Kuzmin "kak-tus@mail.ru"
 ENV MASTER_DC=
 ENV DC=
 ENV CONSUL_HTTP_ADDR=
-ENV CONSUL_HTTP_TOKEN=
+ENV CONSUL_TOKEN=
 
 COPY consul-replicate_0.2.0_SHA256SUMS.txt /bin/consul-replicate_0.2.0_SHA256SUMS.txt
 COPY consul-template_0.15.0_SHA256SUMS /bin/consul-template_0.15.0_SHA256SUMS
