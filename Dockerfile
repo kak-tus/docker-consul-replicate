@@ -7,27 +7,29 @@ ENV DC=
 ENV CONSUL_HTTP_ADDR=
 ENV CONSUL_TOKEN=
 
-COPY consul-replicate_0.2.0_SHA256SUMS.txt /bin/consul-replicate_0.2.0_SHA256SUMS.txt
-COPY consul-template_0.15.0_SHA256SUMS /bin/consul-template_0.15.0_SHA256SUMS
+COPY consul-replicate_0.2.0_SHA256SUMS.txt /usr/local/bin/consul-replicate_0.2.0_SHA256SUMS.txt
+COPY consul-template_0.16.0-rc1_SHA256SUMS /usr/local/bin/consul-template_0.16.0-rc1_SHA256SUMS
 
-COPY consul_template_initial.hcl /etc/consul_template_initial.hcl
 COPY consul_replicate_initial.hcl.template /etc/consul_replicate_initial.hcl.template
 COPY consul_template.hcl /etc/consul_template.hcl
 COPY consul_replicate.hcl.template /etc/consul_replicate.hcl.template
 
-COPY start.sh /bin/start.sh
+COPY start.sh /usr/local/bin/start.sh
 
 RUN apk add --no-cache curl \
-  && cd /bin \
 
+  && cd /usr/local/bin \
   && curl -L https://releases.hashicorp.com/consul-replicate/0.2.0/consul-replicate_0.2.0_linux_amd64.zip -o consul-replicate_0.2.0_linux_amd64.zip \
   && sha256sum -c consul-replicate_0.2.0_SHA256SUMS.txt \
   && unzip consul-replicate_0.2.0_linux_amd64.zip \
   && rm consul-replicate_0.2.0_linux_amd64.zip consul-replicate_0.2.0_SHA256SUMS.txt \
 
-  && curl -L https://releases.hashicorp.com/consul-template/0.15.0/consul-template_0.15.0_linux_amd64.zip -o consul-template_0.15.0_linux_amd64.zip \
-  && sha256sum -c consul-template_0.15.0_SHA256SUMS \
-  && unzip consul-template_0.15.0_linux_amd64.zip \
-  && rm consul-template_0.15.0_linux_amd64.zip consul-template_0.15.0_SHA256SUMS
+  && cd /usr/local/bin \
+  && curl -L https://releases.hashicorp.com/consul-template/0.16.0-rc1/consul-template_0.16.0-rc1_linux_amd64.zip -o consul-template_0.16.0-rc1_linux_amd64.zip \
+  && sha256sum -c consul-template_0.16.0-rc1_SHA256SUMS \
+  && unzip consul-template_0.16.0-rc1_linux_amd64.zip \
+  && rm consul-template_0.16.0-rc1_linux_amd64.zip consul-template_0.16.0-rc1_SHA256SUMS \
 
-CMD ["start.sh"]
+  && apk del curl && rm -rf /var/cache/apk/*
+
+CMD ["/usr/local/bin/start.sh"]
