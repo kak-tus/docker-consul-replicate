@@ -9,4 +9,8 @@ prefix {
 prefix {
   source = "vault@{{ key "config/consul/master_dc" }}"
 }
+
+prefix {
+  source = "stolon@{{ key "config/consul/master_dc" }}"
+}
 {{end}}{{end}}{{end}}
