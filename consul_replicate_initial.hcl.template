@@ -1,5 +1,6 @@
 retry = "10s"
 max_stale = "10m"
+log_level = "err"
 
 {{with $dc1 := env "MASTER_DC"}}{{with $dc2 := env "DC"}}{{if ne $dc1 (printf "%s" $dc2) }}
 prefix {
