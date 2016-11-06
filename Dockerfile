@@ -16,6 +16,8 @@ COPY consul_replicate.hcl.template /etc/consul_replicate.hcl.template
 
 COPY start.sh /usr/local/bin/start.sh
 
+COPY consul-replicate.zip /usr/local/bin/consul-replicate.zip
+
 RUN apk add --no-cache curl \
 
   && cd /usr/local/bin \
@@ -29,6 +31,10 @@ RUN apk add --no-cache curl \
   && sha256sum -c consul-template_0.16.0-rc1_SHA256SUMS \
   && unzip consul-template_0.16.0-rc1_linux_amd64.zip \
   && rm consul-template_0.16.0-rc1_linux_amd64.zip consul-template_0.16.0-rc1_SHA256SUMS \
+
+  && rm consul-replicate \
+  && unzip consul-replicate.zip \
+  && rm consul-replicate.zip \
 
   && apk del curl && rm -rf /var/cache/apk/*
 

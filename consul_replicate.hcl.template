@@ -13,4 +13,16 @@ prefix {
 prefix {
   source = "stolon@{{ key "config/consul/master_dc" }}"
 }
+
+exclude {
+  source = "stolon/cluster/db/proxies/info/"
+}
+
+exclude {
+  source = "stolon/cluster/db/sentinels/info/"
+}
+
+exclude {
+  source = "stolon/cluster/db/keepers/discovery/"
+}
 {{end}}{{end}}{{end}}
