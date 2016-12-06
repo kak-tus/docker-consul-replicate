@@ -26,4 +26,8 @@ exclude {
 exclude {
   source = "stolon/cluster/db/keepers/discovery/"
 }
+
+exclude {
+  source = "vault/sys/expire/"
+}
 {{end}}{{end}}{{end}}

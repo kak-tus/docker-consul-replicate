@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 consul-template -once -template="/etc/consul_replicate_initial.hcl.template:/etc/consul_replicate_initial.hcl"
 timeout -t 10 consul-replicate -config /etc/consul_replicate_initial.hcl
