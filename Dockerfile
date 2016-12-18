@@ -36,6 +36,6 @@ RUN apk add --no-cache curl \
   && unzip consul-replicate.zip \
   && rm consul-replicate.zip \
 
-  && apk del curl && rm -rf /var/cache/apk/*
+  && apk del && rm -rf /var/cache/apk/*
 
 CMD ["/usr/local/bin/start.sh"]
